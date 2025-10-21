@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { projectsAPI, tasksAPI, statusesAPI } from '@/services/api'
+import { projectsAPI, tasksAPI, statusesAPI } from '@/api'
 
 export const useTaskStore = defineStore('task', () => {
   // State

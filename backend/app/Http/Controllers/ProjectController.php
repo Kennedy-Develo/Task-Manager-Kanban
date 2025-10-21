@@ -2,47 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreProjectRequest;
+use App\Models\Project;
+use App\Services\ProjectService;
+use Illuminate\Http\JsonResponse;
 
 class ProjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function __construct(
+        private ProjectService $projectService
+    ) {}
+
+    public function index(): JsonResponse
     {
-        //
+        $projects = $this->projectService->getAllProjects();
+        return response()->json($projects);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request): JsonResponse
     {
-        //
+        $project = $this->projectService->createProject($request->validated());
+        return response()->json($project, 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function destroy(Project $project): JsonResponse
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $this->projectService->deleteProject($project);
+        return response()->json(['message' => 'Projeto deletado com sucesso.'], 200);
     }
 }
