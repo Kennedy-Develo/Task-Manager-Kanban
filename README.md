@@ -2755,4 +2755,8 @@ Lembre-se: o objetivo não é entregar código perfeito, mas mostrar que você:
 - ✅ Documenta seu trabalho
 - ✅ Aprende com o processo
 
+<<<<<<< HEAD
 **Você consegue!** 💪
+=======
+**Você consegue!** 💪
+>>>>>>> 46cd0f730896bc74d17ee20fcc0a413213c1f506
